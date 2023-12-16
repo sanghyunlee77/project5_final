@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Pet">
+    <insert id="insertPet">
+        insert into PETDATA (mname, pname, kind, pnumber, comeday, contents)
+        values
+        (#{mname} , #{pname} ,#{kind} , #{pnumber} , #{comeday}, #{contents})
+    </insert>
+    <update id="updatePet">
+        update PETDATA
+        set mname=#{mname}, pname=#{pname}, kind=#{kind}, pnumber=#{pnumber}, comeday=#{comeday}, byeday =#{byeday}, contents#{contents}
+        where seq=#{seq}
+    </update>
+    <delete id="deletePet">
+        delete from PETDATA where seq=#{id}
+    </delete>
+    <select id="getPet" resultType="pet">
+        select * from PETDATA where sql=#{id}
+    </select>
+    <select id="getPetList" resultType="pet">
+        select * from PETDATA order by seq desc
+    </select>
+</mapper>
